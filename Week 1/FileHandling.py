@@ -12,7 +12,7 @@ import os # module needed to delete files
 # 4 different modes
 # "r" - read; throws error if file does not exist
 # "a" - append; creates file if it does not exist
-# "w" - write; if a file already has data, it will be overwritten
+# "w" - write; if a file already has data, it will be overwritten (truncated)
 # "x" = create; throws error if file fails to create (ex. file path error)
 
 # Determine if file is binary or text using "b" and "t"
@@ -56,12 +56,16 @@ import os # module needed to delete files
 #     print(teamFile.read())
 
 # Let's delete MySecondFile
+# Have to import os for deleting
 # Best practice to check if it exists before we delete
 # if os.path.exists("./Week 1/resources/MySecondFile.txt"):
 #     os.remove("./Week 1/resources/MySecondFile.txt")
 #     print("File deleted successfully")
 # else:
 #     print("Something went wrong, file was not deleted")
+
+# You can delete EMPTY directories using the exact same process but with
+# os.rmdir("dirctory-to-delete")
 
 with open("./Week 1/resources/MyNewFile.txt") as myFile:
     lines = myFile.readlines() # creates a list of each line
@@ -83,7 +87,4 @@ with open("./Week 1/resources/MyNewFile.txt") as myFile:
     print(position)
 
 # Opening a file in binary is required for any read/write on non-text files
-# line one
-# line two
-# line three
-# line four
+
