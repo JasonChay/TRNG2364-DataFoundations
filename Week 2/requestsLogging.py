@@ -4,10 +4,18 @@
 import requests
 import logging
 
+# Say this code below is put in its own module (.py file)
+# The if block will only trigger if this module is executed directly
+# because __name__ attribute of the module is set to __main__ only when executed directly
+# otherwise, if it is used through importing, it's __name__ is the name of the module excluding .py 
+# if __name__ == "__main__":
+#     pass # do something
+
+
 # LOGGING
 # Logging configuration:
 logging.basicConfig(
-    level = logging.INFO, # default level of INFO
+    level = logging.INFO, # it is WARNING by default
     format = "%(asctime)s | %(levelname)s | %(message)s",
     handlers = {
         logging.FileHandler("pokemon.log"),
@@ -15,6 +23,7 @@ logging.basicConfig(
     }
 )
 
+# If no name is provided, the root logger is used
 logger = logging.getLogger(__name__)
 
 
@@ -61,7 +70,7 @@ def get_pokemon(pokemon_name):
             "types": [t['type']['name'] for t in data['types']]
         }
 
-        logger.info(f"Pokemon {pokemon_name} exists and returns some data")
+        logger(f"Pokemon {pokemon_name} exists and returns some data")
         print(pokemon_info)
     
     except requests.exceptions.HTTPError:

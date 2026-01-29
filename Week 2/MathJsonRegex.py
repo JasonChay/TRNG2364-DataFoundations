@@ -40,7 +40,7 @@ print("The value of pi: ", p)
 
 # parse JSON objects and convert them into Python dicts
 json_data = '{"name": "Alice", "age": 30, "city": "New York"}'
-data = json.loads(json_data)
+data = json.loads(json_data) # .loads() can take string, bytes, or bytesarray
 print("Name: ", data["name"])
 print("Age: ", data["age"])
 
@@ -55,7 +55,11 @@ print("JSON object: ", json_object)
 formatted_json = json.dumps(python_dict, indent = 4)
 print("Formatted JSON: ", formatted_json)
 
+# If you make a class with fields that are not compatible with JSON, 
+# you must make a custom JSON encoder class to use dumps()
 
+# Vice versa, you must create a custom decoder to use loads()
+# this one will be a function instead of a class
 
 # RegEx 
 # Regular Expression is a sequence of characters that forms a search pattern
